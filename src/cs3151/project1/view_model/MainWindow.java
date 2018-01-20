@@ -1,4 +1,4 @@
-package cs3151.view_model;
+package cs3151.project1.view_model;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
