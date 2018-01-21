@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cs3151.procject1.model;
+package cs3151.project1.model;
 
 import java.io.File;
 import java.util.ArrayList;
