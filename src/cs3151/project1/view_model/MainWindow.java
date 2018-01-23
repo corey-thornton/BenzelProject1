@@ -18,87 +18,85 @@ import javafx.scene.layout.AnchorPane;
 
 public class MainWindow {
 
-    @FXML
-    private ResourceBundle resources;
+	@FXML
+	private ResourceBundle resources;
 
-    @FXML
-    private URL location;
+	@FXML
+	private URL location;
 
-    @FXML
-    private AnchorPane anchor;
+	@FXML
+	private AnchorPane anchor;
 
-    @FXML
-    private Button directoryChooser;
+	@FXML
+	private Button directoryChooser;
 
-    @FXML
-    private TextArea displayText;
+	@FXML
+	private TextArea displayText;
 
-    @FXML
-    private TextField patternBox;
+	@FXML
+	private TextField patternBox;
 
-    @FXML
-    private RadioButton selectAll;
+	@FXML
+	private RadioButton selectAll;
 
-    @FXML
-    private ToggleGroup group1;
+	@FXML
+	private ToggleGroup group1;
 
-    @FXML
-    private RadioButton selectDirectories;
+	@FXML
+	private RadioButton selectDirectories;
 
-    @FXML
-    private RadioButton selectFiles;
+	@FXML
+	private RadioButton selectFiles;
 
-    @FXML
-    private RadioButton nameOnly;
+	@FXML
+	private RadioButton nameOnly;
 
-    @FXML
-    private ToggleGroup group2;
+	@FXML
+	private ToggleGroup group2;
 
-    @FXML
-    private RadioButton fullPath;
-    
-    private ArrayList<String> list;
-    
-    private JFileChooser fchooser;
-    
-    private DirectorySearch search;
+	@FXML
+	private RadioButton fullPath;
 
-    @FXML
-    void onDirectoryClick(ActionEvent event) {
-    	this.search = new DirectorySearch();
-    	this.list = new ArrayList<String>();
-		this.fchooser = new JFileChooser();
-		this.displayText = new TextArea();
-		fchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		fchooser.setAcceptAllFileFilterUsed(false);
-		int value = fchooser.showOpenDialog(null);
-		if(value != JFileChooser.APPROVE_OPTION) {
-			return;
-		}
-		search.directorySearch(fchooser.getSelectedFile());
-		for(String name : list) {
-			this.displayText.setText(name + "/n");
-		}
-    	
+	private ArrayList<String> list;
 
-    }
+	private JFileChooser fchooser;
 
-    @FXML
-    void initialize() {
-        assert anchor != null : "fx:id=\"anchor\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert directoryChooser != null : "fx:id=\"directoryChooser\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert displayText != null : "fx:id=\"displayText\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert patternBox != null : "fx:id=\"patternBox\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert selectAll != null : "fx:id=\"selectAll\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert group1 != null : "fx:id=\"group1\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert selectDirectories != null : "fx:id=\"selectDirectories\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert selectFiles != null : "fx:id=\"selectFiles\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert nameOnly != null : "fx:id=\"nameOnly\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert group2 != null : "fx:id=\"group2\" was not injected: check your FXML file 'mainWindow.fxml'.";
-        assert fullPath != null : "fx:id=\"fullPath\" was not injected: check your FXML file 'mainWindow.fxml'.";
+	private DirectorySearch search;
 
-    }
+	@FXML
+	void onDirectoryClick(ActionEvent event) {
+		 this.search = new DirectorySearch();
+		 this.list = new ArrayList<String>();
+		 this.fchooser = new JFileChooser();
+		 this.displayText = new TextArea();
+		 this.directoryChooser = new Button();
+		 fchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		 fchooser.setAcceptAllFileFilterUsed(false);
+		 int value = fchooser.showOpenDialog(null);
+		 if (value != JFileChooser.APPROVE_OPTION) {
+		 return;
+		 }
+		 search.directorySearch(fchooser.getSelectedFile(),list);
+		 for (String name : list) {
+		 System.out.println(name);
+		 }
+		
+
+	}
+
+	@FXML
+	void initialize() {
+		assert anchor != null : "fx:id=\"anchor\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert directoryChooser != null : "fx:id=\"directoryChooser\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert displayText != null : "fx:id=\"displayText\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert patternBox != null : "fx:id=\"patternBox\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert selectAll != null : "fx:id=\"selectAll\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert group1 != null : "fx:id=\"group1\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert selectDirectories != null : "fx:id=\"selectDirectories\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert selectFiles != null : "fx:id=\"selectFiles\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert nameOnly != null : "fx:id=\"nameOnly\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert group2 != null : "fx:id=\"group2\" was not injected: check your FXML file 'mainWindow.fxml'.";
+		assert fullPath != null : "fx:id=\"fullPath\" was not injected: check your FXML file 'mainWindow.fxml'.";
+
+	}
 }
-
-
-
