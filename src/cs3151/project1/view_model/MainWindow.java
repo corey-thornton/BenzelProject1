@@ -1,7 +1,12 @@
 package cs3151.project1.view_model;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.swing.JFileChooser;
+
+import cs3151.project1.model.DirectorySearch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -51,9 +56,30 @@ public class MainWindow {
 
     @FXML
     private RadioButton fullPath;
+    
+    private ArrayList<String> list;
+    
+    private JFileChooser fchooser;
+    
+    private DirectorySearch search;
 
     @FXML
     void onDirectoryClick(ActionEvent event) {
+    	this.search = new DirectorySearch();
+    	this.list = new ArrayList<String>();
+		this.fchooser = new JFileChooser();
+		this.displayText = new TextArea();
+		fchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		fchooser.setAcceptAllFileFilterUsed(false);
+		int value = fchooser.showOpenDialog(null);
+		if(value != JFileChooser.APPROVE_OPTION) {
+			return;
+		}
+		search.directorySearch(fchooser.getSelectedFile());
+		for(String name : list) {
+			this.displayText.setText(name + "/n");
+		}
+    	
 
     }
 
@@ -73,3 +99,6 @@ public class MainWindow {
 
     }
 }
+
+
+

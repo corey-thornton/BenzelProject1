@@ -17,7 +17,7 @@ public class DirectorySearch {
 private static ArrayList<String> list;
 private static JFileChooser fchooser;
 	
-	private static void directorySearch(File dir) {
+	public   void directorySearch(File dir) {
 		if(dir.isDirectory()) {
 			for(File file : dir.listFiles()) {
 				list.add(file.getAbsolutePath());
@@ -28,7 +28,7 @@ private static JFileChooser fchooser;
 		}
 	}
 	
-public static void main(String[] args) {
+public   void main(String[] args) {
 		
 		list = new ArrayList<String>();
 		fchooser = new JFileChooser();
