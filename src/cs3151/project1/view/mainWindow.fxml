@@ -10,7 +10,7 @@
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cs3151.project1.view_model.MainWindow">
    <children>
       <Button fx:id="directoryChooser" layoutX="46.0" layoutY="37.0" mnemonicParsing="false" onAction="#onDirectoryClick" prefHeight="58.0" prefWidth="161.0" text="Root Directory" />
-      <TextArea fx:id="displayText" editable="false" layoutX="12.0" layoutY="117.0" prefHeight="470.0" prefWidth="797.0" />
+      <TextArea fx:id="displayText" layoutX="12.0" layoutY="117.0" prefHeight="470.0" prefWidth="797.0" />
       <TextField fx:id="patternBox" layoutX="250.0" layoutY="37.0" promptText="pattern" />
       <RadioButton fx:id="selectAll" layoutX="444.0" layoutY="42.0" mnemonicParsing="false" selected="true" text="All">
          <toggleGroup>

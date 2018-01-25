@@ -65,22 +65,34 @@ public class MainWindow {
 
 	@FXML
 	void onDirectoryClick(ActionEvent event) {
-		 this.search = new DirectorySearch();
-		 this.list = new ArrayList<String>();
-		 this.fchooser = new JFileChooser();
-		 this.displayText = new TextArea();
-		 this.directoryChooser = new Button();
-		 fchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		 fchooser.setAcceptAllFileFilterUsed(false);
-		 int value = fchooser.showOpenDialog(null);
-		 if (value != JFileChooser.APPROVE_OPTION) {
-		 return;
-		 }
-		 search.directorySearch(fchooser.getSelectedFile(),list);
-		 for (String name : list) {
-		 System.out.println(name);
-		 }
+		this.search = new DirectorySearch();
+		this.list = new ArrayList<String>();
+		this.fchooser = new JFileChooser();
+		ArrayList<String> patternList = new ArrayList<String>();
+		StringBuilder sBuild = new StringBuilder();
+		fchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		fchooser.setAcceptAllFileFilterUsed(false);
+		int value = fchooser.showOpenDialog(null);
+		if (value != JFileChooser.APPROVE_OPTION) {
+			return;
+		}
 		
+		search.directorySearch(fchooser.getSelectedFile(), list);
+		patternList = search.patternMatch(this.patternBox.getText(), list);
+		
+
+		for (String name : patternList) {
+			if(this.nameOnly.isSelected()) {
+				String[] sArray = name.split("\\\\");
+				String file = sArray[sArray.length - 1];
+				sBuild.append(file + "\n");
+			}else {
+				sBuild.append(name + "\n");
+			}
+			
+
+		}
+		this.displayText.setText(sBuild.toString());
 
 	}
 
