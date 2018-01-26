@@ -76,25 +76,36 @@ public class MainWindow {
 		if (value != JFileChooser.APPROVE_OPTION) {
 			return;
 		}
-		
+
 		search.directorySearch(fchooser.getSelectedFile(), list);
 		patternList = search.patternMatch(this.patternBox.getText(), list);
-		
 
 		for (String name : patternList) {
-			if(this.nameOnly.isSelected()) {
+			if (this.nameOnly.isSelected()) {
+				if(this.selectFiles.isSelected()) {
+					this.list = new ArrayList<String>();
+					search.directorySearch(fchooser.getSelectedFile(), list);
+				}
 				String[] sArray = name.split("\\\\");
 				String file = sArray[sArray.length - 1];
 				sBuild.append(file + "\n");
-			}else {
+			} else {
 				sBuild.append(name + "\n");
 			}
-			
 
 		}
 		this.displayText.setText(sBuild.toString());
 
 	}
+
+//	private void cheskIsFile(ArrayList<String> list) {
+//		if (this.selectFiles.isSelected()) {
+//			for(String name : list) {
+//				if(name.)
+//			}
+//
+//		}
+//	}
 
 	@FXML
 	void initialize() {
